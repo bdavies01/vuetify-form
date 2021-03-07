@@ -13,7 +13,8 @@ export default new Vuex.Store({
     email: "",
     zip: "",
     phoneNumber: "",
-    privAgreement: false
+    privAgreement: false,
+    homeButton: true
   },
   mutations: {},
   actions: {},

@@ -56,14 +56,18 @@
         <v-btn
           elevation="2"
           :disabled="!isFormValid"
-          class="mr-5"
           @click="submitForm"
         >Submit</v-btn>
+        <v-spacer></v-spacer>
         <v-btn
           elevation="2"
-          class="mr-5"
           @click="resetForm"
         >Reset</v-btn>
+        <v-spacer></v-spacer>
+        <v-btn
+          elevation="2"
+          @click="redirHome"
+        >Home</v-btn>
       </v-row>
     </v-col>
   </v-container>
@@ -106,27 +110,28 @@ export default {
       v => !!v || "E-mail is required",
       v => /.+@.+\..+/.test(v) || "E-mail must be valid"
     ],
-    checkRule: [
-      v => !!v || "You must agree"
-    ],
-    stateRule: [
-      v => !!v || "Must select a state"
-    ]
+    checkRule: [v => !!v || "You must agree"],
+    stateRule: [v => !!v || "Must select a state"]
   }),
   methods: {
     resetForm() {
       this.$refs.form.reset();
     },
     submitForm() {
-      this.$store.firstName = this.firstName;
-      this.$store.lastName = this.lastName;
-      this.$store.firstAddress = this.firstAddress;
-      this.$store.secondAddress = this.secondAddress;
-      this.$store.state = this.state;
-      this.$store.email = this.email;
-      this.$store.zip = this.zip;
-      this.$store.phoneNumber = this.phoneNumber;
-      this.$store.privAgreement = this.privAgreement;
+      this.$store.state.firstName = this.firstName;
+      this.$store.state.lastName = this.lastName;
+      this.$store.state.firstAddress = this.firstAddress;
+      this.$store.state.secondAddress = this.secondAddress;
+      this.$store.state.state = this.state;
+      this.$store.state.email = this.email;
+      this.$store.state.zip = this.zip;
+      this.$store.state.phoneNumber = this.phoneNumber;
+      this.$store.state.privAgreement = this.privAgreement;
+      this.$router.push({ path: "/person-detail" });
+    },
+    redirHome() {
+      this.$router.push({ path: "/" });
+      this.$store.state.homeButton = true;
     }
   }
 };

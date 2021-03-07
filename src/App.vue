@@ -1,11 +1,8 @@
 <template>
-  <div id="app">
+  <div id="app" align="center">
     <div data-app>
       <div id="nav">
-          <!-- <router-link to="/"></router-link>
-          <router-link to="/person-form"> -->
-            <v-btn v-if="enableButton" @click="routeToForm">Add user</v-btn>
-          <!-- </router-link> -->
+          <v-btn v-if="enableButton" @click="routeToForm">Add user</v-btn>
       </div>
     </div>
     <router-view />
@@ -22,7 +19,11 @@ export default {
     routeToForm() {
       this.$router.push({path: "/person-form"});
       this.enableButton = false;
+      this.$store.state.homeButton = false;
     }
+  },
+  updated: function() {
+    this.enableButton = this.$store.state.homeButton;
   }
 };
 
