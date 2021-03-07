@@ -1,23 +1,29 @@
 <template>
-  <v-app>
-    <v-main>
-      <PersonForm />
-    </v-main>
-  </v-app>
+  <div id="app">
+    <div data-app>
+      <div id="nav">
+          <!-- <router-link to="/"></router-link>
+          <router-link to="/person-form"> -->
+            <v-btn v-if="enableButton" @click="routeToForm">Add user</v-btn>
+          <!-- </router-link> -->
+      </div>
+    </div>
+    <router-view />
+  </div>
 </template>
 
 <script>
-import PersonForm from "./components/PersonForm";
-
 export default {
   name: "App",
-
-  components: {
-    PersonForm
-  },
-
   data: () => ({
-    //
-  })
+    enableButton: true
+  }),
+  methods: {
+    routeToForm() {
+      this.$router.push({path: "/person-form"});
+      this.enableButton = false;
+    }
+  }
 };
+
 </script>
