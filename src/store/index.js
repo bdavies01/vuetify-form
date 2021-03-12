@@ -13,10 +13,17 @@ export default new Vuex.Store({
     email: "",
     zip: "",
     phoneNumber: "",
-    privAgreement: false,
-    homeButton: true
+    privAgreement: false
   },
-  mutations: {},
-  actions: {},
+  mutations: {
+    setField(state, payload) {
+      state[payload.key1] = payload.key2;
+    }
+  },
+  actions: {
+    updateField(ctx, payload) {
+      ctx.commit("setField", payload);
+    }
+  },
   modules: {}
 });

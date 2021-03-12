@@ -118,15 +118,15 @@ export default {
       this.$refs.form.reset();
     },
     submitForm() {
-      this.$store.state.firstName = this.firstName;
-      this.$store.state.lastName = this.lastName;
-      this.$store.state.firstAddress = this.firstAddress;
-      this.$store.state.secondAddress = this.secondAddress;
-      this.$store.state.state = this.state;
-      this.$store.state.email = this.email;
-      this.$store.state.zip = this.zip;
-      this.$store.state.phoneNumber = this.phoneNumber;
-      this.$store.state.privAgreement = this.privAgreement;
+      this.$store.dispatch("updateField", {"key1": "firstName", "key2": this.firstName});
+      this.$store.dispatch("updateField", {"key1": "lastName", "key2": this.lastName});
+      this.$store.dispatch("updateField", {"key1": "firstAddress", "key2": this.firstAddress});
+      this.$store.dispatch("updateField", {"key1": "secondAddress", "key2": this.secondAddress});
+      this.$store.dispatch("updateField", {"key1": "state", "key2": this.state});
+      this.$store.dispatch("updateField", {"key1": "email", "key2": this.email});
+      this.$store.dispatch("updateField", {"key1": "zip", "key2": this.zip});
+      this.$store.dispatch("updateField", {"key1": "phoneNumber", "key2": this.phoneNumber});
+      this.$store.dispatch("updateField", {"key1": "privAgreement", "key2": this.privAgreement});
       this.$router.push({ path: "/person-detail" });
     },
     redirHome() {
